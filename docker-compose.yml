@@ -1,0 +1,49 @@
+services:
+  mysql:
+    image: mariadb:10.11
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: test5060
+      MYSQL_DATABASE: digital_wallet
+      MYSQL_USER: root
+      MYSQL_PASSWORD: test5060
+    ports:
+      - "3306:3306"
+    volumes:
+        - digital_wallet_mysql_data:/var/lib/mysql
+
+  redis:
+      image: redis:7-alpine
+      container_name: redis
+      restart: always
+      ports:
+          - "6379:6379"
+      volumes:
+          - redis_data:/data
+
+  phpmyadmin:
+      image: phpmyadmin/phpmyadmin:latest
+      container_name: phpmyadmin
+      restart: unless-stopped
+      environment:
+          PMA_HOST: mariadb
+          PMA_PORT: 3306
+          PMA_USER: root
+          PMA_PASSWORD: test5060
+      ports:
+          - "8081:80"
+      depends_on:
+          - mysql
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: mailpit
+    restart: unless-stopped
+    ports:
+      - "1025:1025"   # SMTP
+      - "8025:8025"   # Web UI
+
+volumes:
+    digital_wallet_mysql_data:
+    redis_data:
