@@ -8,11 +8,11 @@ use Illuminate\Support\Arr;
 class RegexServices
 {
     /**
-    * @pattern is the regex pattern we will use to exclude data from the string example
+    * @pattern is the regex pattern we will use to exclude data from the string example ^(?P<amount>\d+,\d{2})\/\/(?P<reference>\d+)\/\/(?P<date>\d{8})$ (make sure to specify the keys for each field we will get from the provided pattern)
     * @content the content we want to exclude information from
     * @expectedResultKeys the keys we expect to get from the pattern provided
     */
-    public function matchMany(string $pattern,string $content,array $expectedResultKeys = [],Closure $closure): array
+    public function matchMany(string $pattern,string $content,array $expectedResultKeys = [],?Closure $closure = null): array
     {
         preg_match(
             $pattern,
@@ -20,17 +20,18 @@ class RegexServices
             $matches
         );
 
-        if(!empty($expectedResultKeys))
-        {
-            $matches = Arr::only($matches,$expectedResultKeys);
-        }
+        $results = Arr::only($matches,$expectedResultKeys);
 
-        $results = $closure($matches);
+        if(!is_null($closure))
+        {
+            $results = $closure($matches);
+        }
 
         return $results;
     }
 
     /**
+    * the method is handling excluding key value patterns and turn it into an associative array key => value pairs
     * @pattern is the regex pattern we will use to exclude data from the string example
     * @content the content we want to exclude information from
     */
