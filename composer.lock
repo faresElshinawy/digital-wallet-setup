@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5cddd58f60e8e12253780abca12d2867",
+    "content-hash": "7742ba584ff0740aadff026a7a07f7e5",
     "packages": [
         {
             "name": "brick/math",
@@ -3504,6 +3504,67 @@
                 }
             ],
             "time": "2025-07-17T15:46:43+00:00"
+        },
+        {
+            "name": "square1/laravel-idempotency",
+            "version": "12.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/square1-io/laravel-idempotency.git",
+                "reference": "7d5a57bfbaf994d1eb1412cbc681b7107282b64b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/square1-io/laravel-idempotency/zipball/7d5a57bfbaf994d1eb1412cbc681b7107282b64b",
+                "reference": "7d5a57bfbaf994d1eb1412cbc681b7107282b64b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^10.0|^11.0|^12.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "laravel/framework": "^11.0|^12.0",
+                "laravel/pint": "^1.14",
+                "orchestra/testbench": "^9.0|^10.0",
+                "phpunit/phpunit": "^10.0|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Square1\\LaravelIdempotency\\IdempotencyServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Square1\\LaravelIdempotency\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Conroy",
+                    "email": "paul@square1.io"
+                }
+            ],
+            "description": "Add idempotency to Laravel-based APIs, preventing duplicate request processing.",
+            "homepage": "https://github.com/square1-io/laravel-idempotency",
+            "keywords": [
+                "api",
+                "idempotency",
+                "laravel-idempotency",
+                "square1"
+            ],
+            "support": {
+                "issues": "https://github.com/square1-io/laravel-idempotency/issues",
+                "source": "https://github.com/square1-io/laravel-idempotency/tree/12.2.0"
+            },
+            "time": "2025-08-07T15:40:09+00:00"
         },
         {
             "name": "symfony/clock",
