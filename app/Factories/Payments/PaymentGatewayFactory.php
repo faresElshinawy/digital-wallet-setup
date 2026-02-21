@@ -9,7 +9,7 @@ use App\Factories\Payments\Gateways\PayTechBankGateway;
 
 class PaymentGatewayFactory
 {
-    public static function make(string $paymentGateway)
+    public function make(string $paymentGateway)
     {
         $gateway = match($paymentGateway) {
             PaymentGateways::ACME_BANK->value => AcmeBankGateway::class,

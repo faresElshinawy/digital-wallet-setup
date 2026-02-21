@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Factories\Payments\PaymentGatewayFactory;
 use Illuminate\Support\ServiceProvider;
 
-class PaymentProvider extends ServiceProvider
+class PaymentGatewayProvider extends ServiceProvider
 {
     /**
      * Register services.

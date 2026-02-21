@@ -13,8 +13,6 @@ class PayTechBankGateway
 
     public function pay(float $amount,array $data = []): array
     {
-
-        dd($this->credentials);
         return [
             'amount' => $amount
         ];
