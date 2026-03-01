@@ -8,4 +8,5 @@ Route::group([
     'prefix' => 'payments'
 ],function (){
     Route::post('make',[PaymentController::class,'makePayment'])->middleware('idempotency');
+    Route::post('webhooks/{paymentGateway}',[PaymentController::class,'processWebhook']);
 });

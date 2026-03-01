@@ -16,6 +16,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'idempotency' => IdempotencyMiddleware::class
         ]);
+
+        $middleware->preventRequestsDuringMaintenance(except: [
+            'api/v1/payments/webhooks/*',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

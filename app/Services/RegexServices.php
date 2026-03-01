@@ -24,7 +24,7 @@ class RegexServices
 
         if(!is_null($closure))
         {
-            $results = $closure($matches);
+            $results = $closure($results);
         }
 
         return $results;
@@ -49,5 +49,16 @@ class RegexServices
         })->toArray();
 
         return $results;
+    }
+
+    public function clearMultipleLinesString(string $content,$separator = '\n'): string
+    {
+        $content = str_replace(["\r\n", "\r"], "\n", trim($content, '"'));
+
+        $content = preg_replace('/[ \t]*\n[ \t]*/', $separator, $content);
+
+        $lines = array_map('trim', explode($separator, $content));
+
+        return implode($separator, $lines);
     }
 }

@@ -11,4 +11,8 @@ return [
             'api_key' => env('PAYTECH_BANK_API_KEY')
         ],
     ],
+
+    'webhook_settings' => [
+        'processing_chunk_size' => 1
+    ]
 ];
