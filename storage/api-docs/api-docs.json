@@ -1,0 +1,123 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "digital-wallet",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [],
+  "paths": {
+    "/v1/payments/make": {
+      "post": {
+        "summary": "Make Payment",
+        "deprecated": false,
+        "description": "",
+        "tags": ["Payments"],
+        "parameters": [
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "{{$string.uuid}}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "example": {
+                "payment_gateway": "acme",
+                "amount": 150.5,
+                "currency": "USD",
+                "sender_account_number": "1234567890123456789012345678901234",
+                "bank_code": "12345678",
+                "receiver_account_number": "9876543210987654321098765432109876",
+                "beneficiary_name": "John Doe",
+                "notes": [
+                  "Payment for invoice #12345",
+                  "INV-2026-001"
+                ],
+                "charge_type": "RB",
+                "payment_type": "99"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/v1/payments/webhooks/paytech": {
+      "post": {
+        "summary": "webhook",
+        "deprecated": false,
+        "description": "",
+        "tags": ["Payments"],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "",
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "responses": {},
+    "securitySchemes": {}
+  },
+  "servers": [],
+  "security": []
+}
