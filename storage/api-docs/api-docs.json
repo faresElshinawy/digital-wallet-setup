@@ -7,7 +7,7 @@
   },
   "tags": [],
   "paths": {
-    "/v1/payments/make": {
+    "/api/v1/payments/make": {
       "post": {
         "summary": "Make Payment",
         "deprecated": false,
@@ -78,7 +78,7 @@
         "security": []
       }
     },
-    "/v1/payments/webhooks/paytech": {
+    "/api/v1/payments/webhooks/paytech": {
       "post": {
         "summary": "webhook",
         "deprecated": false,
